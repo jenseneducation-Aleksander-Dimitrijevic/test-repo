@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.static(path.join(__dirname, "build")));
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.post("/api/form", (req, res) => {
+app.post("https://test-repo-app.herokuapp.com/", (req, res) => {
   const messageSent = `
             <h3>E-mail details</h3>
             <ul>
@@ -24,14 +24,11 @@ app.post("/api/form", (req, res) => {
         `;
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
       user: "dimitrijevicaleksander.dev@gmail.com", // generated ethereal user
       pass: "Mila2018Dm_" // generated ethereal password
-    },
-    tls: {
-      rejectUnauthorized: false
     }
   });
 

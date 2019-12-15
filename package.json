@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
     "server": "nodemon server.js",
-    "start": "\"npm run server \" \"npm run build/index.html \""
+    "start": "\"npm run server \" \"npm run client \""
   },
   "keywords": [],
   "author": "",

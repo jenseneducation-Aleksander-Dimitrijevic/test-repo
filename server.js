@@ -1,3 +1,7 @@
+if (process.end.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "build")));
+}
+
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
@@ -6,11 +10,10 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(path.join(__dirname, "build")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
